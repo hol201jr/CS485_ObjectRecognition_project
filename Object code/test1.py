@@ -6,7 +6,7 @@ cap.set(3, 640)
 cap.set(4, 420)
 
 # import cascade file for facial recognition
-faceCascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+faceCascade = cv2.CascadeClassifier(cv2.data.haarcascades + "cascade.xml")
 
 '''
     # if you want to detect any object for example eyes, use one more layer of classifier as below:
