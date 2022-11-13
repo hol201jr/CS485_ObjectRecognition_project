@@ -1,0 +1,15 @@
+train: /content/data/train/images
+val: /content/data/valid/images
+test: /content/data/test/images
+nc: 10
+names: 
+- door
+- cabinetDoor
+- refrigeratorDoor
+- window
+- chair
+- table
+- cabinet
+- couch
+- openedDoor
+- pole
