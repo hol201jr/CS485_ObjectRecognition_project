@@ -1,0 +1,125 @@
+#:kivy 2.1.0
+#:import XCamera kivy.garden.xcamera.XCamera
+
+<MainMenu>:
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        orientation:"vertical"
+        spacing: "10dp"
+        Label:
+            text: "Main Menu"
+            size_hint: "30dp" , None 
+            pos_hint: {"center_x": .5}
+            color: .2 , .1 , 0 ,1
+            font_size: 32
+            bold: "True"
+        Button:
+            markup: True
+            font_size: 50
+            background_color: 0,0,0,1
+            text: "[color=#F2F826][b]Navigation[/b][/color]"
+            on_release: root.manager.current = "navigation"
+            size_hint: .80 , 1
+            pos_hint: {"center_x": .5}
+        Button:
+            markup: True
+            font_size: 50
+            background_color: 0,0,0,1
+            text: "[color=#F2F826][b]Camera[/b][/color]"
+            on_release: root.manager.current = "camera"
+            size_hint: .80 , 1
+            pos_hint: {"center_x": .5}
+            font_size: 50
+
+<Navigation>:
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: (0,0,0,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        orientation:"vertical"
+        spacing: "10dp"
+        Label:
+            text: "Object Navigation"
+            size_hint: "30dp" , None 
+            pos_hint: {"center_x": .5}
+            color:  1,1,1,1
+            font_size: 32
+            bold: "True"
+
+        #will edit to make Object recognition
+        Button:
+            markup: True
+            font_size: 50
+            background_color: 1,1,1,1
+            text: "[color=#F2F826][b]Navigation[/b][/color]"
+            on_release: root.manager.current = "camera"
+            size_hint: .80 , 1
+            pos_hint: {"center_x": .5}
+        Button:
+            markup: True
+            font_size: "50dp"
+            background_color: 1,1,1,1
+            text: "[color=#F2F826][b]Go To Main Menu[/b][/color]"
+            on_release: root.manager.current = "main"
+            size_hint: .80 , 1
+            pos_hint: {"center_x": .5}
+
+<CameraScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "5dp"
+        canvas.before:
+            Color:
+                rgba: (0,0,0,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        
+        Label:
+            text: "Object Creation"
+            size_hint: "30dp" , None 
+            pos_hint: {"center_x": .5}
+            color:  1,1,1,1
+            font_size: 32
+            bold: "True"
+
+        #make into a camera
+        Camera:
+            id: camera
+            resolution: (640, 480)
+            play: False
+        Button:
+            text: 'Play'
+            size_hint: "30dp" , None 
+            pos_hint: {"center_x": .5}
+            color:  1,1,1,1
+            font_size: 32
+            on_press: camera.play = not camera.play
+            size_hint_y: None
+            height: '48dp'
+        Button:
+            text: 'Capture'
+            size_hint: "30dp" , None 
+            pos_hint: {"center_x": .5}
+            color:  1,1,1,1
+            font_size: 32
+            size_hint_y: None
+            height: '48dp'
+            on_press: root.capture()
+   
+        Button:
+            text: "Go To Main Menu"
+            font_size: 32
+            on_release: root.manager.current = "main"
+            size_hint: .35 , None
+            height: "60dp"
+            pos_hint: {"center_x": .50}
