@@ -10,7 +10,7 @@ python -m pip install --upgrade pip setuptools virtualenv
 
  install other needed libraries such as object recognition
 
- text to voice, 
+ text to voice for android and IOS, pip install plyer
 
  after everything is installed open Obkivy.py
     and obkiv.kv 
