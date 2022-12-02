@@ -1,0 +1,50 @@
+#:kivy 2.1.0
+BoxLayoutExample:
+#: import XCamera kivy.garden.xcamera.XCamera    
+<BoxLayoutExample>:
+# Can even stack buttons into another button
+    orientation: "vertical"
+    spacing: "10dp"
+    XCamera:
+        id: xcamera
+
+    Button:
+        text:"Navigate"
+        # Width and Height
+        size_hint: .8 , .45
+        pos_hint: { "center_x": .5}
+
+    #embedded layout
+    #BoxLayout:
+     #   orientation:"horizontal"
+      #  Button:
+       #     text: "1"
+       # Button:
+       #     text: "2"
+       # Button:
+       #     text: "3"
+
+    Button:
+        text: "Camera"
+        on_press: root.capture()
+    Label:
+        text: "Exit"
+        #size: "50dp","50dp"
+        size_hint: 1 , None
+        height: "60dp"
+        #pos_hint: {}
+        # x, center_x , right
+        # y, center_y , top
+        pos_hint: { "center_x": .5}
+
+<MainWidget>:
+    Button:
+        text: "Navigate"
+        size : "400dp" , "120dp"
+        pos : "100dp","200dp"
+        #color: r, g,b, a
+        color: 2, 0, 0 , 1
+    Button:
+        text: "Camera"
+        size : "400dp" , "120dp"
+        pos : "50dp","100dp"
