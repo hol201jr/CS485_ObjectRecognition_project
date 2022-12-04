@@ -1,0 +1,24 @@
+DOCUMENTATION:
+
+Kivy Version 2.1.0
+Python Version 3.10 (64bit) # For kivy version 2.1.0 Python 3.10 is supported
+
+KIVY DEPENDENCIES:	# Dependencies are required for Kivy to function properly
+
+certifi==2022.9.24
+charset-normalizer==2.1.1
+docutils==0.19
+idna==3.4
+Kivy==2.1.0
+kivy-deps.angle==0.3.3
+kivy-deps.glew==0.3.1
+kivy-deps.gstreamer==0.3.3	# Required to play Media files
+kivy-deps.sdl2==0.4.5
+Kivy-Garden==0.1.5
+Pillow==9.3.0
+Pygments==2.13.0
+pypiwin32==223
+pywin32==305
+requests==2.28.1
+urllib3==1.26.13
+(kivy_venv)		# Kivy runs a in virtual environment to prevent conflict with
