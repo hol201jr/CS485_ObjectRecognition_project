@@ -1,5 +1,7 @@
 Commands to install Kivy
 
+*Note: will not work with Python 11 use 10 instead
+
 python -m pip install --upgrade pip setuptools virtualenv 
 
  python -m virtualenv kvenv

@@ -1,17 +1,29 @@
 #:kivy 2.1.0
-#:import XCamera kivy.garden.xcamera.XCamera
+#Title: Ibkiv file
+#Author: Manuel Holguin, Derek Oda, Seth Ball, Gabe Romero
+#Date: 12-05-2022
+#Description: Handles all the front-end aspects of the
+#       Kivy App. If App fails to load it could be 
+#
+#Kivy File used as CSS
 
+#Main Menu page
+#These are the configuration for the MainMenu page
 <MainMenu>:
+    #Boxlayout for botton/label/objects orientation
     BoxLayout:
+        #Canvas widget for drawing to the App in this instance was used to
+        #       Color the background
         canvas.before:
             Color:
                 rgba: (1,1,1,1)
             Rectangle:
-                pos: self.pos
-                size: self.size
-
+                pos: self.pos#postion of rectangle
+                size: self.size#Size of rectangle
+        #Sets the buttons orientation "vertical" for "top to bottom" or "korizontal" for "left to right"
         orientation:"vertical"
-        spacing: "10dp"
+        spacing: "10dp" #Kivy representation of CSS padding
+        #label obeject configured, text, color, font size, and positioning
         Label:
             text: "Main Menu"
             size_hint: "30dp" , None 
@@ -19,6 +31,8 @@
             color: .2 , .1 , 0 ,1
             font_size: 32
             bold: "True"
+        #Button config with Markup allows for font config inline    
+        #on_release attribute calls screenmanager to move to the next page
         Button:
             markup: True
             font_size: 50
@@ -27,6 +41,7 @@
             on_release: root.manager.current = "navigation"
             size_hint: .80 , 1
             pos_hint: {"center_x": .5}
+        #Secondary button allows for moving to the camera page
         Button:
             markup: True
             font_size: 50
@@ -36,7 +51,9 @@
             size_hint: .80 , 1
             pos_hint: {"center_x": .5}
             font_size: 50
-
+#Navigation Page
+#   is to implement Object orientation 
+#   needs camera fixing
 <Navigation>:
     BoxLayout:
         canvas.before:
@@ -55,16 +72,30 @@
             font_size: 32
             bold: "True"
             
-
         #will edit to make Object recognition
+        Camera:
+            id: cameratwo
+            resolution: (640, 480)
+            play: False
         Button:
-            markup: True
-            font_size: 50
-            background_color: 1,1,1,1
-            text: "[color=#F2F826][b]Navigation[/b][/color]"
-            on_release: root.manager.current = "camera"
-            size_hint: .80 , 1
+            text: 'Play'
+            size_hint: "30dp" , None 
             pos_hint: {"center_x": .5}
+            color:  1,1,1,1
+            font_size: 32
+            on_press: cameratwo.play = not cameratwo.play
+            size_hint_y: None
+            height: '48dp'
+        Button:
+            text: 'Scan'
+            size_hint: "30dp" , None 
+            pos_hint: {"center_x": .5}
+            color:  1,1,1,1
+            font_size: 32
+            size_hint_y: None
+            height: '48dp'
+            on_press: root.objectRec()
+        #Button to navigate back to main page    
         Button:
             markup: True
             font_size: "50dp"
@@ -74,6 +105,7 @@
             size_hint: .80 , 1
             pos_hint: {"center_x": .5}
 
+#Picture taking page for Camera
 <CameraScreen>:
     BoxLayout:
         orientation: "vertical"
@@ -93,20 +125,26 @@
             font_size: 32
             bold: "True"
 
-        #make into a camera
+        #Camera created with camera id to manage in py file
+        #       Camera is set to false so it does not start 
+        #       automatically
         Camera:
             id: camera
             resolution: (640, 480)
             play: False
-        Button:
-            text: 'Play'
+        #Toggle button manages the camera activation    
+        ToggleButton:
+            id: camBut
+            text: "START"
             size_hint: "30dp" , None 
             pos_hint: {"center_x": .5}
             color:  1,1,1,1
             font_size: 32
+            on_state: root.pressed(self)
             on_press: camera.play = not camera.play
             size_hint_y: None
             height: '48dp'
+        #Button calls capture funtion in py file to snap a picture    
         Button:
             text: 'Capture'
             size_hint: "30dp" , None 
@@ -116,7 +154,7 @@
             size_hint_y: None
             height: '48dp'
             on_press: root.capture()
-   
+        #Button to navigate back to main page
         Button:
             text: "Go To Main Menu"
             font_size: 32
